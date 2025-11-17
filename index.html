@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMNİYAYI-N- | Türkiye'nin En Kapsamlı Canlı TV Portalı</title>
+    
+    <meta name="description" content="StreamPro - Türkiye'nin ulusal, haber, spor, belgesel ve dizi kanallarını tek bir platformda izleyin. 150+ kanal ve anlık yayın akışı.">
+    <meta name="theme-color" content="#222831">
+    
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" as="style">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body data-theme="dark"> 
+    
+    <div class="site-wrapper">
+        
+        <div class="top-ad-banner">
+            <div class="ad-text-content container">
+                <i class="fas fa-bullhorn"></i> 
+                <span>ULTIMATE PRO'YA ÖZEL İNDİRİM! Reklamsız, 4K canlı yayın ve arşiv erişimi.</span>
+                <a href="#" class="ad-link">Hemen Yükselt!</a>
+            </div>
+        </div>
+
+        <header class="sticky-header">
+            <div class="header-content container">
+                
+                <div class="logo-area">
+                    <a href="index.html" class="app-logo-link">
+                        <img src="fox_logo.png" alt="StreamPro Tilki Logosu" class="app-logo-img">
+                        <h1 class="logo-text">OMNİYAYI-N-</h1>
+                    </a>
+                </div>
+
+                <div class="search-container" role="search">
+                    <input type="text" id="searchInput" placeholder="Kanal, Program veya Kategori Ara..." aria-label="Kanal veya Program Arama" autocomplete="off" aria-controls="searchSuggestions" aria-expanded="false">
+                    <i class="fas fa-search search-icon"></i>
+                    <div id="searchSuggestions" class="search-suggestions hidden" role="listbox"></div>
+                </div>
+
+                <div class="user-area">
+                    <div class="dropdown-container">
+                        <button class="notification-btn" aria-label="Bildirimler" aria-expanded="false" aria-controls="notificationPanel">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge hidden">3</span> 
+                        </button>
+                        <div id="notificationPanel" class="dropdown-panel hidden" role="region">
+                            <div class="dropdown-header">Bildirimler</div>
+                            <ul>
+                                <li><a href="#"><strong>Yargı</strong> 10 dakika içinde başlıyor.</a></li>
+                                <li><a href="#"><strong>Premium</strong> üyeliğiniz yenilendi.</a></li>
+                                <li><a href="#">Yeni <i class="fab fa-youtube"></i> kanalları eklendi!</a></li>
+                            </ul>
+                            <div class="dropdown-footer"><a href="#">Tümünü Gör</a></div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container">
+                        <button class="profile-link" aria-label="Kullanıcı Profili" aria-expanded="false" aria-controls="profilePanel">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div id="profilePanel" class="dropdown-panel hidden" role="region">
+                            <div class="dropdown-header">Hoş Geldin, Kullanıcı!</div>
+                            <ul>
+                                <li><a href="profile.html"><i class="fas fa-user-edit"></i> Profilim</a></li>
+                                <li><a href="#"><i class="fas fa-cog"></i> Ayarlar</a></li>
+                                <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Temayı Değiştir">
+                        <i class="fas fa-sun"></i> 
+                    </button>
+                </div>
+            </div>
+            
+            <div class="category-nav-wrapper container">
+                <nav id="categoryNav" class="category-nav"></nav>
+            </div>
+        </header>
+
+        <div class="container main-content">
+            
+            <div class="filter-controls">
+                <div class="result-info">
+                    <span id="resultCount">Yükleniyor...</span>
+                </div>
+                <div class="sort-options">
+                    <span>Sırala:</span>
+                    <button class="sort-btn active" data-sort="default">
+                        <i class="fas fa-stream"></i> Varsayılan
+                    </button>
+                    <button class="sort-btn" data-sort="az">
+                        <i class="fas fa-sort-alpha-down"></i> A-Z
+                    </button>
+                    <button class="sort-btn" data-sort="popular">
+                        <i class="fas fa-fire"></i> Popüler (Sim)
+                    </button>
+                </div>
+            </div>
+
+            <div class="main-grid">
+
+                <aside class="sidebar left-sidebar">
+                    
+                    <div class="widget widget-nav">
+                        <h3><i class="fas fa-compass"></i> Keşfet</h3>
+                        <ul class="nav-links">
+                            <li><a href="#" class="active"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                            <li><a href="#"><i class="fas fa-broadcast-tower"></i> Canlı Yayınlar</a></li>
+                            <li><a href="#"><i class="fas fa-heart"></i> Favorilerim</a></li>
+                            <li><a href="#"><i class="fas fa-history"></i> Geçmiş</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget widget-categories">
+                        <h3><i class="fas fa-th-list"></i> Kategoriler</h3>
+                        <ul class="category-list">
+                            <li><a href="#"><i class="fas fa-flag"></i> Ulusal</a></li>
+                            <li><a href="#"><i class="fas fa-newspaper"></i> Haber</a></li>
+                            <li><a href="#"><i class="fas fa-futbol"></i> Spor</a></li>
+                            <li><a href="#"><i class="fas fa-film"></i> Film & Dizi</a></li>
+                            <li><a href="#"><i class="fas fa-paw"></i> Belgesel</a></li>
+                            <li><a href="#"><i class="fas fa-music"></i> Müzik</a></li>
+                            <li><a href="#"><i class="fas fa-child"></i> Çocuk</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget widget-support">
+                         <ul class="support-links">
+                            <li><a href="#"><i class="fas fa-envelope"></i> İletişim</a></li>
+                            <li><a href="#"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                         </ul>
+                         <div class="app-download">
+                             <p>Uygulamamızı İndirin</p>
+                             <a href="#" class="app-btn"><i class="fab fa-android"></i></a>
+                             <a href="#" class="app-btn"><i class="fab fa-apple"></i></a>
+                         </div>
+                    </div>
+
+                </aside>
+
+                <div class="main-channels-area">
+                    <section class="channel-section all-channels">
+                        <h2><i class="fas fa-grip-horizontal"></i> Full Kapsamlı Yayın Akışı</h2>
+                        
+                        <div id="channelLoader" class="loader-container">
+                            <div class="spinner"></div>
+                            <span>Kanallar Yükleniyor...</span>
+                        </div>
+                        
+                        <div class="channel-list" id="channelList"></div>
+
+                        <div id="noResultsMessage" class="info-message hidden">
+                            <i class="fas fa-search"></i>
+                            <p>Aramanızla eşleşen kanal bulunamadı.</p>
+                            <span>Farklı bir anahtar kelime deneyin.</span>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="sidebar right-sidebar">
+                    
+                    <div class="widget vertical-banner-area" style="padding: 0; background: transparent; box-shadow: none; border: none;">
+                        <a href="#" target="_blank" rel="nofollow">
+                            <img src="banner.png" alt="Reklam" style="width: 100%; height: auto; border-radius: 10px; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        </a>
+                    </div>
+
+                    <div class="widget widget-popular">
+                        <h3><i class="fas fa-fire"></i> Yayın Akışı Trendleri</h3>
+                        <ul id="popularPrograms">
+                            <li><a href="#"><span class="badge">1</span> Yargı (Kanal D)</a></li>
+                            <li><a href="#"><span class="badge">2</span> Gönül Dağı (TRT 1)</a></li>
+                            <li><a href="#"><span class="badge">3</span> Ana Haber (CNN Türk)</a></li>
+                            <li><a href="#"><span class="badge">4</span> Formula 1 (S Sport)</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="widget widget-cta">
+                        <h3><i class="fas fa-gem"></i> Premium Fırsat</h3>
+                        <p><i class="fas fa-shield-alt"></i> Reklamsız, 4K canlı yayın ve özel arşiv erişimi.</p>
+                        <button class="upgrade-btn">Hemen Yükselt <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+                    <div class="widget widget-social">
+                        <h3><i class="fas fa-share-alt"></i> Bizi Takip Edin</h3>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                </aside>
+            </div> </div>
+        
+        <footer>
+            <p>OMNİYAYI-N- &copy; 2025 | Tüm Hakları Saklıdır. | Canlı yayınlar resmi sitelere yönlendirilmektedir.</p>
+        </footer>
+        
+    </div> 
+    
+    <button id="scrollTopBtn" class="scroll-top-btn hidden" title="Yukarı Çık">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
