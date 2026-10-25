@@ -287,13 +287,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Kanal Kartını HTML Olarak Oluştur
     function createChannelCard(channel) {
         const progress = calculateProgress(channel.epg.startTime, channel.epg.endTime);
-        const fallbackImage = `https://via.placeholder.com/50x50/00ADB5/ffffff?text=${channel.name.charAt(0)}`;
+        const letter = (channel.name || "?").charAt(0);
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='100%' height='100%' rx='8' fill='#00ADB5'/><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-size='32' fill='#ffffff'>${letter}</text></svg>`;
+        const fallbackImage = `data:image/svg+xml,${encodeURIComponent(svg)}`;
 
         return `
         <div class="channel-card" data-name="${channel.name}" data-category="${channel.category}">
             <div class="card-content-wrapper">
                 <div class="logo-container">
-                    <img src="${channel.logoUrl}" alt="${channel.name}" onerror="this.src='${fallbackImage}'">
+                    <img src="${channel.logoUrl}" alt="${channel.name}" onerror="this.onerror=null;this.src='${fallbackImage}'">
                 </div>
                 <div class="info">
                     <div class="channel-name">${channel.name}</div>
